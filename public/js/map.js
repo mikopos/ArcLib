@@ -15,7 +15,11 @@ var map = new ol.Map({
     layers: [raster, vectorLayer],
     target: 'map',
     view: new ol.View({
-        center: [-11000000, 4600000],
+        center: [1163747.714729, 6683705.090302],
         zoom: 4
     })
+});
+
+map.on('click', function(evt){
+    console.info(evt.coordinate);
 });
