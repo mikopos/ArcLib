@@ -1,17 +1,17 @@
 
-var raster = new ol.layer.Tile({
+let raster = new ol.layer.Tile({
     source: new ol.source.OSM()
 });
 
-var sourceLayer = new ol.source.Vector({
+let sourceLayer = new ol.source.Vector({
     wrapX:false
 });
 
-var vectorLayer = new ol.layer.Vector({
+let vectorLayer = new ol.layer.Vector({
     source: sourceLayer
 })
 
-var map = new ol.Map({
+let map = new ol.Map({
     layers: [raster, vectorLayer],
     target: 'map',
     view: new ol.View({
