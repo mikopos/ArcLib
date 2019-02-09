@@ -61,19 +61,19 @@ function createArcWithAngle(center, radius, segments, direction, angle) {
 
     for (let i = 1 ; i<=2 ; i++){
         if (i ==1){
-            featureArcOutside = new ol.Feature({
+            featureArc = new ol.Feature({
                 geometry: new ol.geom.Polygon([pointList])
             });
 
-            sourceArcOutside = new ol.source.Vector({
+            sourceArc = new ol.source.Vector({
                 features: [featureArc]
             });
 
-            let layerArcOutside = new ol.layer.Vector({
+            let layerArc = new ol.layer.Vector({
                 source: sourceArc,
                 style: styleArc
             });
-            map.addLayer(layerArcOutside);
+            map.addLayer(layerArc);
 
         }
     }
