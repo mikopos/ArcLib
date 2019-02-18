@@ -1,3 +1,22 @@
+let sourceArc;
+let featureArc;
+
+let arcFill = new ol.style.Fill({
+    color: [51,204,255,0.2]
+});
+
+let styleArc = new ol.style.Style({
+    stroke: new ol.style.Stroke({
+        color: [51,204,255,0.2],
+        width: 2
+    })
+});
+
+
+
+styleArc.setFill(arcFill);
+
+
 function createArcWithAngle(center, radius, segments, direction, angle) {
 
     let alpha = 0;
