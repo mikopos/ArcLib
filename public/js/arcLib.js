@@ -22,35 +22,35 @@ function createArcWithAngle(center, radius, segments, direction, angle) {
     let alpha = 0;
     let omega = 0;
 
-    if(direction=='N'){
+    if(direction === 'N'){
         alpha = 90 - angle/2;
         omega = 90 + angle/2;
     }
-    else if(direction=='S'){
+    else if(direction === 'S'){
         alpha = 270 - angle/2;
         omega = 270 + angle/2;
     }
-    else if(direction=='W'){
+    else if(direction === 'W'){
         alpha = 180 - angle/2;
         omega = 180 + angle/2;
     }
-    else if(direction=='E'){
+    else if(direction === 'E'){
         alpha = 360 - angle/2;
         omega = 360 + angle/2;
     }
-    else if(direction=='NW'){
+    else if(direction === 'NW'){
         alpha = 90 + angle/4;
         omega = 180 - angle/4;
     }
-    else if(direction=='NE'){
+    else if(direction === 'NE'){
         alpha = angle/4;
         omega = 90 - angle/4;
     }
-    else if(direction=='SW'){
+    else if(direction === 'SW'){
         alpha = 180 + angle/4;
         omega = 270 - angle/4;
     }
-    else if (direction=='SE'){
+    else if (direction === 'SE'){
         alpha = 270 + angle/4;
         omega = 360 - angle/4;
     }
@@ -79,7 +79,7 @@ function createArcWithAngle(center, radius, segments, direction, angle) {
 
 
     for (let i = 1 ; i<=2 ; i++){
-        if (i ==1){
+        if (i === 1){
             featureArc = new ol.Feature({
                 geometry: new ol.geom.Polygon([pointList])
             });

@@ -9,7 +9,7 @@ let sourceLayer = new ol.source.Vector({
 
 let vectorLayer = new ol.layer.Vector({
     source: sourceLayer
-})
+});
 
 let map = new ol.Map({
     layers: [raster, vectorLayer],
