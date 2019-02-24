@@ -12,12 +12,12 @@ let styleArc = new ol.style.Style({
     })
 });
 
-
-
 styleArc.setFill(arcFill);
 
 
-function createArcWithAngle(center, radius, segments, direction, angle) {
+function createArcWithAngle(rawCenter, radius, segments, direction, angle) {
+console.log('Center === '+rawCenter);
+let center = centerBeautify(rawCenter);
 
     let alpha = 0;
     let omega = 0;
@@ -58,6 +58,7 @@ function createArcWithAngle(center, radius, segments, direction, angle) {
         alpha = 0;
         omega = 360;
     }
+    console.log('Direction === '+ direction + ' alpha === '+alpha + ' omega === '+omega);
 
     let pointList = [];
     pointList.push([center.x, center.y]);
@@ -76,7 +77,7 @@ function createArcWithAngle(center, radius, segments, direction, angle) {
     }
 
     pointList.push([center.x, center.y]);
-
+    console.log('PointList === '+pointList);
 
     for (let i = 1 ; i<=2 ; i++){
         if (i === 1){
@@ -88,12 +89,12 @@ function createArcWithAngle(center, radius, segments, direction, angle) {
                 features: [featureArc]
             });
 
-            let layerArc = new ol.layer.Vector({
+            return new ol.layer.Vector({
                 source: sourceArc,
                 style: styleArc
             });
-            map.addLayer(layerArc);
-
+            // map.addLayer(layerArc);
+            // return layerArc;
         }
     }
 }
@@ -110,3 +111,7 @@ function editArc(){}
 function getArcAllSegments(){}
 
 function getSurfaceOfArc(){}
+
+function centerBeautify(center){
+    return {x:center[0], y:center[1]};
+}
