@@ -30,8 +30,6 @@ function createArcWithAngle(rawCenter, radius, segments, direction, angle) {
 
 function createArcWithCoords(center, segments, direction, x, y) {}
 
-function arcFeatures(){}
-
 function removeArc(){}
 
 function editArc(){}
