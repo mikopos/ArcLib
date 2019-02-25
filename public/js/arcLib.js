@@ -28,15 +28,25 @@ function createArcWithAngle(rawCenter, radius, segments, direction, angle) {
 }
 
 
-function createArcWithCoords(center, segments, direction, x, y) {}
+function createArcWithCoords(center, segments, direction, x, y) {
+    //TO-DO
+}
 
-function removeArc(){}
+function removeArc(sourceVector, features){
+    sourceVector.removeFeature(features);
+}
 
-function editArc(){}
+function editArc(sourceVector, layerVector, features, fillColor, strokeColor, strokeWidth){
+    // TO-DO
+}
 
-function getArcAllSegments(){}
+function getArcAllSegments(){
+    //TO-DO
+}
 
-function getSurfaceOfArc(){}
+function getSurfaceOfArc(){
+    //TO-DO
+}
 
 function centerBeautify(center){
     return {x:center[0], y:center[1]};
