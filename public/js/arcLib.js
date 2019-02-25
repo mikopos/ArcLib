@@ -1,24 +1,65 @@
-let sourceArc;
-let featureArc;
-
-let arcFill = new ol.style.Fill({
-    color: [51,204,255,0.2]
-});
-
-let styleArc = new ol.style.Style({
-    stroke: new ol.style.Stroke({
-        color: [51,204,255,0.2],
-        width: 2
-    })
-});
-
-styleArc.setFill(arcFill);
-
-
 function createArcWithAngle(rawCenter, radius, segments, direction, angle) {
-console.log('Center === '+rawCenter);
-let center = centerBeautify(rawCenter);
 
+    let center = centerBeautify(rawCenter);
+    let gAngle = directionBeautify(direction, angle);
+
+    let pointList = [];
+    pointList.push([center.x, center.y]);
+
+    let segmentAngle = segments + 1;
+    for (let i = 0; i < segmentAngle; i++) {
+        let differentialAngle = gAngle.alpha - (gAngle.alpha - gAngle.omega) * i / (segmentAngle - 1);
+        let x = center.x + radius * Math.cos(differentialAngle * Math.PI / 180);
+        let y = center.y + radius * Math.sin(differentialAngle * Math.PI / 180);
+        let point = [x, y];
+        pointList.push(point);
+    }
+    pointList.push([center.x, center.y]);
+
+    for (let i = 1 ; i<=2 ; i++){
+        if (i === 1){
+           let feature = createFeature(pointList);
+           let vectorStyle = createArcStyle([51,204,255,0.2], [51,204,255,0.2], 2);
+           let sourceVector = createSourceVector(feature);
+
+           return createLayerVector(sourceVector, vectorStyle);
+        }
+    }
+}
+
+
+function createArcWithCoords(center, segments, direction, x, y) {}
+
+function arcFeatures(){}
+
+function removeArc(){}
+
+function editArc(){}
+
+function getArcAllSegments(){}
+
+function getSurfaceOfArc(){}
+
+function centerBeautify(center){
+    return {x:center[0], y:center[1]};
+}
+
+function createArcStyle(fillColor, strokeColor, strokeWidth){
+    let fill = new ol.style.Fill({
+        color: fillColor
+    });
+
+    let style = new ol.style.Style({
+        stroke: new ol.style.Stroke({
+            color: strokeColor,
+            width: strokeWidth
+        })
+    });
+    style.setFill(fill);
+    return style;
+}
+
+function directionBeautify(direction, angle){
     let alpha = 0;
     let omega = 0;
 
@@ -58,60 +99,25 @@ let center = centerBeautify(rawCenter);
         alpha = 0;
         omega = 360;
     }
-    console.log('Direction === '+ direction + ' alpha === '+alpha + ' omega === '+omega);
 
-    let pointList = [];
-    pointList.push([center.x, center.y]);
-
-
-    let dAngle = segments + 1;
-    for (let i = 0; i < dAngle; i++) {
-        let Angle = alpha - (alpha - omega) * i / (dAngle - 1);
-        let x = center.x + radius * Math.cos(Angle * Math.PI / 180);
-        let y = center.y + radius * Math.sin(Angle * Math.PI / 180);
-
-        let point = [x, y];
-
-        pointList.push(point);
-
-    }
-
-    pointList.push([center.x, center.y]);
-    console.log('PointList === '+pointList);
-
-    for (let i = 1 ; i<=2 ; i++){
-        if (i === 1){
-            featureArc = new ol.Feature({
-                geometry: new ol.geom.Polygon([pointList])
-            });
-
-            sourceArc = new ol.source.Vector({
-                features: [featureArc]
-            });
-
-            return new ol.layer.Vector({
-                source: sourceArc,
-                style: styleArc
-            });
-            // map.addLayer(layerArc);
-            // return layerArc;
-        }
-    }
+    return {alpha: alpha, omega: omega};
 }
 
+function createFeature(pointList){
+    return new ol.Feature({
+        geometry: new ol.geom.Polygon([pointList])
+    });
+}
 
-function createArcWithCoords(center, segments, direction, x, y) {}
+function createSourceVector(feature){
+    return new ol.source.Vector({
+        features: [feature]
+    });
+}
 
-function arcFeatures(){}
-
-function removeArc(){}
-
-function editArc(){}
-
-function getArcAllSegments(){}
-
-function getSurfaceOfArc(){}
-
-function centerBeautify(center){
-    return {x:center[0], y:center[1]};
+function createLayerVector(sourceVector, vectorStyle){
+    return new ol.layer.Vector({
+        source: sourceVector,
+        style: vectorStyle
+    });
 }
