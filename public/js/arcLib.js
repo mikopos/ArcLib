@@ -32,6 +32,10 @@ function createArcWithCoords(center, segments, direction, x, y) {
     //TO-DO
 }
 
+function createArcwithDirectionInDegrees(center, radius, segments, degrees, angle ){
+
+}
+
 function removeArc(sourceVector, features){
     sourceVector.removeFeature(features);
 }
