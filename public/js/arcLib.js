@@ -1,3 +1,4 @@
+
 function createArcWithAngle(rawCenter, radius, segments, direction, angle) {
 
     let center = centerBeautify(rawCenter);
@@ -22,7 +23,7 @@ function createArcWithAngle(rawCenter, radius, segments, direction, angle) {
            let vectorStyle = createArcStyle([51,204,255,0.2], [51,204,255,0.2], 2);
            let sourceVector = createSourceVector(feature);
 
-           return createLayerVector(sourceVector, vectorStyle);
+           return createLayerVector(sourceVector, vectorStyle,radius, angle);
         }
     }
 }
@@ -33,7 +34,7 @@ function createArcWithCoords(center, segments, direction, x, y) {
 }
 
 function createArcwithDirectionInDegrees(center, radius, segments, degrees, angle ){
-
+    //TO-DO
 }
 
 function removeArc(sourceVector, features){
@@ -48,8 +49,14 @@ function getArcAllSegments(){
     //TO-DO
 }
 
-function getSurfaceOfArc(){
-    //TO-DO
+function getSurfaceOfArc(layerVector){
+    let surface;
+    let circleSurface;
+
+    circleSurface = 3.14 * (layerVector.values_.radius)^2;
+    surface = (layerVector.values_.angle * circleSurface)/360;
+
+    return surface;
 }
 
 function centerBeautify(center){
@@ -127,9 +134,11 @@ function createSourceVector(feature){
     });
 }
 
-function createLayerVector(sourceVector, vectorStyle){
+function createLayerVector(sourceVector, vectorStyle, radius, angle){
     return new ol.layer.Vector({
         source: sourceVector,
-        style: vectorStyle
+        style: vectorStyle,
+        radius: radius,
+        angle: angle
     });
 }
