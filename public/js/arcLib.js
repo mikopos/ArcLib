@@ -33,8 +33,33 @@ function createArcWithCoords(center, segments, direction, x, y) {
     //TO-DO
 }
 
-function createArcwithDirectionInDegrees(center, radius, segments, degrees, angle ){
-    //TO-DO
+function createArcwithDirectionInDegrees(rawCenter, radius, segments, degrees, angle ){
+
+    let center = centerBeautify(rawCenter);
+    let gAngle = degreesBeautify(degrees, angle);
+
+    let pointList = [];
+    pointList.push([center.x, center.y]);
+
+    let segmentAngle = segments + 1;
+    for (let i = 0; i < segmentAngle; i++) {
+        let differentialAngle = gAngle.alpha - (gAngle.alpha - gAngle.omega) * i / (segmentAngle - 1);
+        let x = center.x + radius * Math.cos(differentialAngle * Math.PI / 180);
+        let y = center.y + radius * Math.sin(differentialAngle * Math.PI / 180);
+        let point = [x, y];
+        pointList.push(point);
+    }
+    pointList.push([center.x, center.y]);
+
+    for (let i = 1 ; i<=2 ; i++){
+        if (i === 1){
+            let feature = createFeature(pointList);
+            let vectorStyle = createArcStyle([51,204,255,0.2], [51,204,255,0.2], 2);
+            let sourceVector = createSourceVector(feature);
+
+            return createLayerVector(sourceVector, vectorStyle,radius, angle);
+        }
+    }
 }
 
 function removeArc(sourceVector, features){
@@ -111,6 +136,50 @@ function directionBeautify(direction, angle){
         omega = 270 - angle/4;
     }
     else if (direction === 'SE'){
+        alpha = 270 + angle/4;
+        omega = 360 - angle/4;
+    }
+    else{
+        alpha = 0;
+        omega = 360;
+    }
+
+    return {alpha: alpha, omega: omega};
+}
+
+function degreesBeautify(degrees, angle){
+    let alpha = 0;
+    let omega = 0;
+
+    if(degrees === 90){
+        alpha = 90 - angle/2;
+        omega = 90 + angle/2;
+    }
+    else if(degrees === 180){
+        alpha = 180 - angle/2;
+        omega = 180 + angle/2;
+    }
+    else if(degrees === 270){
+        alpha = 270 - angle/2;
+        omega = 270 + angle/2;
+    }
+    else if(degrees === 360){
+        alpha = 360 - angle/2;
+        omega = 360 + angle/2;
+    }
+    else if(degrees > 0 && degrees < 90){
+        alpha = angle/4;
+        omega = 90 - angle/4;
+    }
+    else if(degrees > 90 && degrees < 180){
+        alpha = 90 + angle/4;
+        omega = 180 - angle/4;
+    }
+    else if(degrees > 180 && degrees < 270){
+        alpha = 180 + angle/4;
+        omega = 270 - angle/4;
+    }
+    else if (degrees > 270 && degrees < 360){
         alpha = 270 + angle/4;
         omega = 360 - angle/4;
     }

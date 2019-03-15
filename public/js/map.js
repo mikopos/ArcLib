@@ -24,7 +24,8 @@ map.on('click', function(evt){
     // console.info(evt.coordinate);
     // console.log(raster.getSource().getProjection().getCode());
     createPin(evt.coordinate);
-    let layer = createArcWithAngle(evt.coordinate, 3000000, 100, 'S', 60);
+    // let layer = createArcWithAngle(evt.coordinate, 3000000, 100, 'S', 60);
+    let layer = createArcwithDirectionInDegrees(evt.coordinate, 3000000, 100, 31, 60);
     map.addLayer(layer);
     getSurfaceOfArc(layer);
     // map.addLayer(createArcWithAngle(new ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:3857'), 30, 100, 'S', 60));
