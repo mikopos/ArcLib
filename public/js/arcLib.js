@@ -167,25 +167,9 @@ function degreesBeautify(degrees, angle){
         alpha = 360 - angle/2;
         omega = 360 + angle/2;
     }
-    else if(degrees > 0 && degrees < 90){
-        alpha = angle/4;
-        omega = 90 - angle/4;
-    }
-    else if(degrees > 90 && degrees < 180){
-        alpha = 90 + angle/4;
-        omega = 180 - angle/4;
-    }
-    else if(degrees > 180 && degrees < 270){
-        alpha = 180 + angle/4;
-        omega = 270 - angle/4;
-    }
-    else if (degrees > 270 && degrees < 360){
-        alpha = 270 + angle/4;
-        omega = 360 - angle/4;
-    }
     else{
-        alpha = 0;
-        omega = 360;
+        alpha = degrees + angle/2;
+        omega = degrees - angle/2;
     }
 
     return {alpha: alpha, omega: omega};
