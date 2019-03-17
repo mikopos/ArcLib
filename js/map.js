@@ -21,12 +21,11 @@ let map = new ol.Map({
 });
 
 map.on('click', function(evt){
-    createPin(evt.coordinate);
+    /* Uncomment the constructor of your preference to create the arc*/
     // let layer = createArcWithAngle(evt.coordinate, 3000000, 100, 'S', 60);
-    let layer = createArcwithDirectionInDegrees(evt.coordinate, 3000000, 100, 90, 60);
+    let layer = createArcwithDirectionInDegrees(evt.coordinate, 3000000, 100, 270, 60);
     map.addLayer(layer);
-    // getSurfaceOfArc(layer);
-    console.log(getArcAllSegments(layer));
+    createPin(evt.coordinate);
 });
 
 function createPin(coord) {
@@ -40,7 +39,7 @@ function createPin(coord) {
             anchor: [0.5, 46],
             anchorXUnits: 'fraction',
             anchorYUnits: 'pixels',
-            src: 'https://openlayers.org/en/v4.6.5/examples/data/icon.png'
+            src: '../assets/icons/location-pin.png'
         }))
     });
 
