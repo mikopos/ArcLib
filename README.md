@@ -49,6 +49,7 @@ don't need the rest of the files, to use the library.**
 Please read [CONTRIBUTING.md](https://github.com/mikopos/ArcLib/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
+The current version is v1.0.0 .
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/mikopos/ArcLib/tags). 
 
