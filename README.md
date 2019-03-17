@@ -46,7 +46,7 @@ don't need the rest of the files, to use the library.**
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/mikopos/ArcLib/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CODE_OF_CONDUCT.md](https://github.com/mikopos/ArcLib/blob/master/CODE_OF_CONDUCT.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 The current version is v1.0.0 .
