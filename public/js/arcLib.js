@@ -70,8 +70,14 @@ function editArc(sourceVector, layerVector, features, fillColor, strokeColor, st
     // TO-DO
 }
 
-function getArcAllSegments(){
-    //TO-DO
+function getArcAllSegments(layerVector){
+    let feat = layerVector.getSource().getFeatures();
+    let segmentList = {pointList:[], length:0};
+    feat.forEach(function(feat){
+        segmentList.pointList = feat.getGeometry().getCoordinates();
+        segmentList.length = segmentList.pointList[0].length;
+    });
+    return segmentList;
 }
 
 function getSurfaceOfArc(layerVector){
