@@ -28,11 +28,6 @@ function createArcWithAngle(rawCenter, radius, segments, direction, angle) {
     }
 }
 
-
-function createArcWithCoords(center, segments, direction, x, y) {
-    //TO-DO
-}
-
 function createArcwithDirectionInDegrees(rawCenter, radius, segments, degrees, angle ){
 
     let center = centerBeautify(rawCenter);
@@ -64,10 +59,6 @@ function createArcwithDirectionInDegrees(rawCenter, radius, segments, degrees, a
 
 function removeArc(sourceVector, features){
     sourceVector.removeFeature(features);
-}
-
-function editArc(sourceVector, layerVector, features, fillColor, strokeColor, strokeWidth){
-    // TO-DO
 }
 
 function getArcAllSegments(layerVector){
