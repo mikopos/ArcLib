@@ -59,5 +59,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * [Thaleskreis](http://gis.ibbeck.de/ginfo/apps/OLExamples/OL29/Thaleskreis/thaleskreis.asp)
+* [PurpleBooth](https://gist.github.com/PurpleBooth)
 
 
