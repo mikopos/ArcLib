@@ -1,7 +1,6 @@
 # ArcLib
 
-[Arcs are in geometry a closed segment of differentiable curve](https://en.wikipedia.org/wiki/Arc_(geometry) 
-
+[Arcs are in geometry a closed segment of differentiable curve.](https://en.wikipedia.org/wiki/Arc_(geometry)) 
 In OpenLayers creating an arc might be a messy and confusing task, as there is no embedded way to do this.
 ArcLib is a JS library that targets in making this task easier by wrapping all the functionality of creating arcs
 in simple contructors.
