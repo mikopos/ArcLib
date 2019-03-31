@@ -38,6 +38,46 @@ In case you want to test the library, before you use it, just **clone the whole 
 open index.html** from your browser. **In any other case just follow the above steps, as you 
 don't need the rest of the files, to use the library.**
 
+##How to Use it
+The library consists of several methods for creating, removing and editing arcs in OpenLayers
+maps.
+* 2 Constructors : 
+```
+createArcWithAngle(rawCenter, radius, segments, direction, angle)
+
+or
+
+createArcwithDirectionInDegrees(rawCenter, radius, segments, degrees, angle )
+```
+
+* 1 Remover
+```
+removeArc(sourceVector, features)
+```
+
+* 2 Helper functions
+```
+getArcAllSegments(layerVector)
+
+and
+
+getSurfaceOfArc(layerVector)
+```
+
+##Example
+This is a mouse click function, that creates arcs using the methods of the library 
+and add them in the OpenLayers map.
+
+```
+map.on('click', function(evt){
+    /* Uncomment the constructor of your preference to create the arc*/
+    // let layer = createArcWithAngle(evt.coordinate, 3000000, 100, 'S', 60);
+    let layer = createArcwithDirectionInDegrees(evt.coordinate, 3000000, 100, 270, 60);
+    map.addLayer(layer);
+    createPin(evt.coordinate);
+});
+```
+
 ## Built With
 
 * [HTML](https://en.wikipedia.org/wiki/HTML) - Used to create the initial UI.
